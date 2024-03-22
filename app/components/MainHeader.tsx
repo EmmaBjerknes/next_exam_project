@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Panel from "./Panel/Panel";
 import Link from "next/link";
-import { MdMenu } from "react-icons/md";
+import { MdMenu, MdOutlineShoppingCart } from "react-icons/md";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,7 +13,7 @@ const Header = () => {
   };
 
   return (
-    <header className="flex flex-row items-center justify-between p-4 sticky top-0 bg-white">
+    <header className="flex flex-row items-center justify-between p-4 sticky top-0 bg-white gap-4">
       <div className="container gap-4 flex items-center">
         <Image
           src="/favicon.ico"
@@ -24,6 +24,16 @@ const Header = () => {
         <h1 className="lg:text-3xl md:text-2xl sm:text-xl font-bold">
           <Link href="/">Essence</Link>
         </h1>
+      </div>
+      <div>
+        <button
+          className="p-1 hover:bg-purple-200 transition-colors duration-300 rounded-full"
+          title="cart"
+        >
+          <Link href="/cart">
+            <MdOutlineShoppingCart size={"2rem"} />
+          </Link>
+        </button>
       </div>
       <div>
         <button
