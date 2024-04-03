@@ -1,12 +1,16 @@
 import React from "react";
 import Link from "next/link";
 import { IoMdClose } from "react-icons/io";
-import { navigationData } from "@/app/data/navigationData";
 
 interface IProps {
   togglePanel: () => void;
 }
 
+const navigationData = [
+  { name: "Produkter", path: "/products" },
+  { name: "Kampanj", path: "/products/campaign" },
+  { name: "Om Essence", path: "/about" },
+];
 
 const Panel = ({ togglePanel }: IProps) => {
   return (
