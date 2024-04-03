@@ -1,5 +1,5 @@
 const { db } = require("@vercel/postgres");
-const { products } = require("../app/lib/placeholder-data.js");
+const { products, campaign } = require("../app/lib/placeholder-data.js");
 
 async function seedProducts(client) {
   try {
@@ -52,11 +52,50 @@ async function seedProducts(client) {
   }
 }
 
+async function seedCampaigns(client) {
+  try {
+    // Create the "products" table if it doesn't exist
+    const createTable = await client.sql`
+        CREATE TABLE IF NOT EXISTS campaign (
+          id SERIAL PRIMARY KEY,
+          name VARCHAR(512) NOT NULL,
+          discountPercent INT NOT NULL
+        );
+      `;
+
+    console.log(`Created "campaign" table`);
+
+    // Insert data into the "campaign" table
+    const insertedCampaigns = await Promise.all(
+      campaign.map((camp) =>
+        client.query(
+          `
+          INSERT INTO campaign (name, discountPercent)
+          VALUES ($1, $2)
+          ON CONFLICT (id) DO NOTHING;
+        `,
+          [camp.name, camp.discountPercent]
+        )
+      )
+    );
+
+    console.log(`Seeded ${insertedCampaigns.length} campaign`);
+
+    return {
+      createTable,
+      campaign: insertedCampaigns,
+    };
+  } catch (error) {
+    console.error("Error seeding campaign:", error);
+    throw error;
+  }
+}
+
 async function main() {
   const client = await db.connect();
 
-  await seedProducts(client);
-
+  // await seedProducts(client);
+  await seedCampaigns(client);
   await client.end();
 }
 
