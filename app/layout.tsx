@@ -24,7 +24,7 @@ export default async function RootLayout({
       <SessionProvider session={session}>
         <body>
           <MainHeader />
-          <main className="flex min-h-screen flex-col items-center justify-between p-24">
+          <main className="flex min-h-screen flex-col items-center xl:p-12 sm:p-2">
             {children}
           </main>
           <Footer />
