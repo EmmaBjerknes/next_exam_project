@@ -1,3 +1,5 @@
+import { IProducts } from "@/app/types/products";
+import { validateImgUrl } from "@/app/utils/productUtils";
 import { sql } from "@vercel/postgres";
 import { NextResponse } from "next/server";
 
@@ -18,12 +20,9 @@ export async function GET() {
         campaign c ON p.campaign = c.id
     `;
 
-    const validProducts = completeProductList.rows.filter((product) => {
-      return (
-        product.productimage.includes("/images/products/") &&
-        product.productimage.endsWith(".jpg")
-      );
-    });
+    const validProducts = validateImgUrl(
+      completeProductList.rows as IProducts[]
+    );
 
     return NextResponse.json(validProducts, { status: 200 });
   } catch (error) {
