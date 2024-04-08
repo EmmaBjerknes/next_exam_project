@@ -45,13 +45,13 @@ const PreviewProductsCards = () => {
       <CarouselContent>
         {firstSevenProducts.map((product, index) => (
           <CarouselItem key={index}>
-            <div className="flex flex-col m-2 md:w-60 md:h-100 justify-center items-center bg-white shadow-md p-2 text-center cursor-pointer">
+            <div className="flex flex-col m-2 justify-center items-center bg-white shadow-md p-2 text-center cursor-pointer">
               {product.campaign_discount_percent === null ? (
                 <p>herp</p>
               ) : (
                 <p>derp</p>
               )}
-              <div className="md:w-24 md:h-48 w-40 h-60 lg:w-60 lg:h-80 relative">
+              <div className="flex-shrink-0 w-24 h-48 sm:w-40 sm:h-60 lg:w-60 lg:h-80 relative">
                 {
                   <Image
                     src={`https://www.mcdn.net${product.productimage}`}
