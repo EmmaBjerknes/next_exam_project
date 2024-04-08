@@ -6,4 +6,5 @@ export interface IProducts {
   category: string;
   campaign_discount_percent: number | null;
   campaign_name: string | null;
+  discountPrice?: number;
 }
