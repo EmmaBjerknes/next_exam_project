@@ -21,7 +21,7 @@ const Header = () => {
           width={40}
           height={40}
         />
-        <h1 className="lg:text-3xl md:text-2xl sm:text-xl font-bold">
+        <h1>
           <Link href="/">Essence</Link>
         </h1>
       </div>
