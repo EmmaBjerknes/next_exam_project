@@ -6,6 +6,9 @@
   --foreground-hex: #dfdcdc;
   --background-start-rgb: 250, 250, 250;
   --background-end-rgb: 233, 211, 255;
+
+  --badge-primary: #FFFDC1;
+  --badge-secondary: #E9D3FF; 
 }
 
 html {
@@ -33,7 +36,7 @@ h2 {
 }
 
 h3 {
-  @apply lg:text-xl md:text-lg sm:text-base font-medium; 
+  @apply lg:text-xl md:text-lg sm:text-base font-semibold; 
 }
 
 h4 {

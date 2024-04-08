@@ -10,6 +10,7 @@ import {
   CarouselPrevious,
 } from "@/app/components/ui/carousel";
 import { calculatePrice } from "@/app/utils/productUtils";
+import { Badge } from "@/app/components/ui/badge";
 
 const PreviewProductsCards = () => {
   const [data, setData] = useState<IProducts[]>([]);
@@ -48,7 +49,16 @@ const PreviewProductsCards = () => {
         {test.map((product, index) => (
           <CarouselItem key={index}>
             <div className="flex flex-col m-2 justify-center items-center bg-white shadow-md p-2 text-center cursor-pointer">
-              {!!product.campaign_name && <span>{product.campaign_name}</span>}
+              <div
+                className={`flex self-start ${!product.campaign_name && "m-6"}`}
+              >
+                {product.campaign_name === "Rea!" && (
+                  <Badge variant="campaign">{product.campaign_name}</Badge>
+                )}
+                {product.campaign_name === "Outlet" && (
+                  <Badge variant="outlet">{product.campaign_name}</Badge>
+                )}
+              </div>
               <div className="flex-shrink-0 w-24 h-48 sm:w-40 sm:h-60 lg:w-60 lg:h-80 relative">
                 {
                   <Image
@@ -63,11 +73,11 @@ const PreviewProductsCards = () => {
                 }
               </div>
 
-              <h2>{product.name}</h2>
+              <h3>{product.name}</h3>
               {product.discountPrice ? (
                 <>
                   <p>ord. {product.price} kr</p>
-                  <h3 className="text-red-600">{product.discountPrice} kr</h3>
+                  <h4 className="text-red-600">{product.discountPrice} kr</h4>
                 </>
               ) : (
                 <h3>{product.price} kr</h3>
