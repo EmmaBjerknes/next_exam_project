@@ -36,7 +36,7 @@ const PreviewProductsCards = () => {
 
   if (loading) return <div>Loading...</div>;
   const firstSevenProducts = data.slice(0, 7);
-  const test = calculatePrice(data);
+  const previewProductsData = calculatePrice(firstSevenProducts);
 
   return (
     <Carousel
@@ -46,7 +46,7 @@ const PreviewProductsCards = () => {
       className="w-[90%]"
     >
       <CarouselContent>
-        {test.map((product, index) => (
+        {previewProductsData.map((product, index) => (
           <CarouselItem key={index}>
             <div className="flex flex-col m-2 justify-center items-center bg-white shadow-md p-2 text-center cursor-pointer">
               <div
