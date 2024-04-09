@@ -1,6 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { IProducts } from "../types/products";
+import ProductsCard from "../components/Cards/ProductCard";
+import { calculatePrice } from "../utils/productUtils";
 
 const Products = () => {
   const [data, setData] = useState<IProducts[]>([]);
@@ -15,7 +17,6 @@ const Products = () => {
         }
         const productsData = await response.json();
         setData(productsData);
-        console.log(productsData);
         setLoading(false);
       } catch (error) {
         console.error(error);
@@ -25,31 +26,18 @@ const Products = () => {
     getData();
   }, []);
 
+  const products = calculatePrice(data);
+
+  if (loading) return <div>Loading...</div>;
   return (
-    <div>
-      {loading ? (
-        <div>Loading...</div>
-      ) : (
-        <>
-          <h1>Products</h1>
-          <ul>
-            {data.map((product, i) => (
-              <li key={i}>
-                <h2>{product.name}</h2>
-                <p>{product.description}</p>
-                <p>{product.category}</p>
-                <p>{product.price}</p>
-                {product.campaign_discount_percent === null ? (
-                  <p>herp</p>
-                ) : (
-                  <p>derp</p>
-                )}
-              </li>
-            ))}
-          </ul>
-        </>
-      )}
-    </div>
+    <>
+      <h1>Alla produkter</h1>
+      <div className="flex flex-wrap justify-center">
+        {products.map((product, i) => (
+          <ProductsCard key={i} {...product} />
+        ))}
+      </div>
+    </>
   );
 };
 
