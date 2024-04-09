@@ -48,10 +48,8 @@ const PreviewProductsCards = () => {
       <CarouselContent>
         {previewProductsData.map((product, index) => (
           <CarouselItem key={index}>
-            <div className="flex flex-col m-2 justify-center items-center bg-white shadow-md p-2 text-center cursor-pointer">
-              <div
-                className={`flex self-start ${!product.campaign_name && "m-6"}`}
-              >
+            <div className="flex flex-col m-2 justify-between items-center bg-white shadow-md p-2 text-center cursor-pointer w-52 lg:w-72 lg:h-96">
+              <div className="flex self-start">
                 {product.campaign_name === "Rea!" && (
                   <Badge variant="campaign">{product.campaign_name}</Badge>
                 )}
@@ -59,7 +57,7 @@ const PreviewProductsCards = () => {
                   <Badge variant="outlet">{product.campaign_name}</Badge>
                 )}
               </div>
-              <div className="flex-shrink-0 w-24 h-48 sm:w-40 sm:h-60 lg:w-60 lg:h-80 relative">
+              <div className="flex-shrink-0  h-48 lg:h-56">
                 {
                   <Image
                     src={`https://www.mcdn.net${product.productimage}`}
