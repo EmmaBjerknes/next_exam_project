@@ -16,11 +16,11 @@ const Panel = ({ togglePanel }: IProps) => {
   return (
     <>
       <div
-        className="fixed top-0 right-0 w-full h-full bg-gray-300/[.5]"
+        className="fixed top-0 right-0 w-full h-full bg-gray-300/[.5] z-20"
         onClick={togglePanel}
         title="close"
       ></div>
-      <div className="fixed z-90 pl-4 top-0 right-0 h-full w-2/4 max-w-sm bg-white text-black">
+      <div className="fixed z-90 pl-4 top-0 right-0 h-full w-2/4 max-w-sm bg-white text-black z-30">
         <div className="py-4">
           <button
             onClick={togglePanel}

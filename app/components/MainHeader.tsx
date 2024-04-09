@@ -13,7 +13,7 @@ const Header = () => {
   };
 
   return (
-    <header className="flex flex-row items-center justify-between p-4 sticky top-0 bg-white gap-4">
+    <header className="flex flex-row items-center justify-between p-4 relative top-0 bg-white gap-4">
       <div className="container gap-4 flex items-center">
         <Image
           src="/favicon.ico"
@@ -21,7 +21,7 @@ const Header = () => {
           width={40}
           height={40}
         />
-        <h1 className="lg:text-3xl md:text-2xl sm:text-xl font-bold">
+        <h1>
           <Link href="/">Essence</Link>
         </h1>
       </div>
