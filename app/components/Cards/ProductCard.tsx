@@ -1,14 +1,20 @@
 import { IProducts } from "@/app/types/products";
 import { Badge } from "../ui/badge";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const ProductsCard = (product: IProducts) => {
+  const router = useRouter();
+
   const splitProductName = (productName: string) =>
     productName.split(",").map((part) => part.trim());
   const productNameArray = splitProductName(product.name);
 
   return (
-    <div className="flex flex-col m-2 justify-between items-center bg-white shadow-md p-2 text-center cursor-pointer w-52 lg:w-72 lg:h-96">
+    <div
+      onClick={() => router.push("/products/" + product.id)}
+      className="flex flex-col m-2 justify-between items-center bg-white shadow-md p-2 text-center cursor-pointer w-52 lg:w-72 lg:h-96"
+    >
       <div className="flex self-start">
         {product.campaign_name === "Rea!" && (
           <Badge variant="campaign">{product.campaign_name}</Badge>

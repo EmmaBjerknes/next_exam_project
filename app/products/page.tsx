@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { IProducts } from "../types/products";
 import ProductsCard from "../components/Cards/ProductCard";
 import { calculatePrice } from "../utils/productUtils";
@@ -8,23 +8,24 @@ const Products = () => {
   const [data, setData] = useState<IProducts[]>([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    async function getData() {
-      try {
-        const response = await fetch("/api/getProducts");
-        if (!response.ok) {
-          throw new Error("Failed to fetch products");
-        }
-        const productsData = await response.json();
-        setData(productsData);
-        setLoading(false);
-      } catch (error) {
-        console.error(error);
-        setLoading(false);
+  const getData = useCallback(async () => {
+    try {
+      const response = await fetch("/api/getProducts");
+      if (!response.ok) {
+        throw new Error("Failed to fetch products");
       }
+      const productsData = await response.json();
+      setData(productsData);
+      setLoading(false);
+    } catch (error) {
+      console.error(error);
+      setLoading(false);
     }
-    getData();
   }, []);
+
+  useEffect(() => {
+    getData();
+  }, [getData]);
 
   const products = calculatePrice(data);
 
