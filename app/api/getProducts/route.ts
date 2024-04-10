@@ -7,6 +7,7 @@ export async function GET() {
   try {
     const completeProductList = await sql`
       SELECT 
+        p.id,
         p.name,
         p.description,
         p.productimage,

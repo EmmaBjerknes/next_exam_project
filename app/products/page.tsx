@@ -33,8 +33,8 @@ const Products = () => {
     <>
       <h1>Alla produkter</h1>
       <div className="flex flex-wrap justify-center">
-        {products.map((product, i) => (
-          <ProductsCard key={i} {...product} />
+        {products.map((product) => (
+          <ProductsCard key={product.id} {...product} />
         ))}
       </div>
     </>

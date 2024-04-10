@@ -46,8 +46,8 @@ const PreviewProductsCards = () => {
       className="w-[90%]"
     >
       <CarouselContent>
-        {previewProductsData.map((product, index) => (
-          <CarouselItem key={index}>
+        {previewProductsData.map((product) => (
+          <CarouselItem key={product.id}>
             <div className="flex flex-col m-2 justify-between items-center bg-white shadow-md p-2 text-center cursor-pointer w-52 lg:w-72 lg:h-96">
               <div className="flex self-start">
                 {product.campaign_name === "Rea!" && (
