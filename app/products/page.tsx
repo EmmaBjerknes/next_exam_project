@@ -1,7 +1,7 @@
 "use client";
 import React, { useCallback, useEffect, useState } from "react";
 import { IProducts } from "../types/products";
-import ProductsCard from "../components/Cards/ProductCard";
+import ProductCard from "../components/Cards/ProductCard";
 import { calculatePrice } from "../utils/productUtils";
 
 const Products = () => {
@@ -35,7 +35,7 @@ const Products = () => {
       <h1>Alla produkter</h1>
       <div className="flex flex-wrap justify-center">
         {products.map((product) => (
-          <ProductsCard key={product.id} {...product} />
+          <ProductCard key={product.id} {...product} />
         ))}
       </div>
     </>

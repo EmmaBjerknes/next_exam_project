@@ -3,7 +3,7 @@ import { Badge } from "../ui/badge";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-const ProductsCard = (product: IProducts) => {
+const ProductCard = (product: IProducts) => {
   const router = useRouter();
 
   const splitProductName = (productName: string) =>
@@ -51,4 +51,4 @@ const ProductsCard = (product: IProducts) => {
   );
 };
 
-export default ProductsCard;
+export default ProductCard;
