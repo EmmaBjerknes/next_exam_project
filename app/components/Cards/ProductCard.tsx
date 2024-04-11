@@ -2,6 +2,7 @@ import { IProducts } from "@/app/types/products";
 import { Badge } from "../ui/badge";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import PriceBox from "./components/PriceBox";
 
 const ProductCard = (product: IProducts) => {
   const router = useRouter();
@@ -39,14 +40,7 @@ const ProductCard = (product: IProducts) => {
 
       <h3>{productNameArray[0]}</h3>
       {productNameArray[1] && <p>{productNameArray[1]}</p>}
-      {product.discountPrice ? (
-        <>
-          <p>ord. {product.price} kr</p>
-          <h4 className="text-red-600">{product.discountPrice} kr</h4>
-        </>
-      ) : (
-        <h3>{product.price} kr</h3>
-      )}
+      <PriceBox {...product} />
     </div>
   );
 };

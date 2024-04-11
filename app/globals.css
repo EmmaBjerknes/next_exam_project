@@ -28,17 +28,17 @@ body {
 
 
 h1 {
-  @apply lg:text-3xl md:text-2xl text-xl font-bold; 
+  @apply lg:text-3xl text-2xl font-bold; 
 }
 
 h2 {
-  @apply lg:text-2xl md:text-xl text-lg font-semibold; 
+  @apply lg:text-2xl text-xl font-semibold; 
 }
 
 h3 {
-  @apply lg:text-xl md:text-lg text-base font-semibold; 
+  @apply lg:text-xl text-lg font-semibold; 
 }
 
 h4 {
-  @apply lg:text-lg md:text-base text-base font-medium; 
+  @apply lg:text-lg text-lg font-medium; 
 }
