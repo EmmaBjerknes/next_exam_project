@@ -9,6 +9,7 @@ interface IProps {
 const navigationData = [
   { name: "Produkter", path: "/products" },
   { name: "Kampanj", path: "/products/campaign" },
+  { name: "Outlet", path: "/products/outlet" },
   { name: "Om Essence", path: "/about" },
 ];
 

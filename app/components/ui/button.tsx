@@ -9,9 +9,12 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        addToCart:
+          "border-input bg-black drop-shadow-md text-white hover:filter-none",
         carousel:
           "absolute  h-8 w-8 rounded-full hover:bg-[var(--badge-secondary)]",
         cta: "border-input bg-[var(--badge-primary)] font-semibold drop-shadow-md hover:filter-none",
+        navBack: "decoration-[var(--badge-secondary)] hover:underline",
       },
       size: {
         default: "h-10 px-4 py-2",

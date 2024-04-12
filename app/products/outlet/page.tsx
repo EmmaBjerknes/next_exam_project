@@ -4,13 +4,13 @@ import { IProducts } from "@/app/types/products";
 import { calculatePrice } from "@/app/utils/productUtils";
 import React, { useCallback, useEffect, useState } from "react";
 
-const Campaign = () => {
+const Outlet = () => {
   const [data, setData] = useState<IProducts[]>([]);
   const [loading, setLoading] = useState(true);
 
   const getData = useCallback(async () => {
     try {
-      const response = await fetch("/api/campaign");
+      const response = await fetch("/api/outlet");
       if (!response.ok) {
         throw new Error("Failed to fetch products");
       }
@@ -32,7 +32,7 @@ const Campaign = () => {
   if (loading) return <div>Loading...</div>;
   return (
     <>
-      <h1>Vårens REA!</h1>
+      <h1>Outlet</h1>
       <div className="flex flex-wrap justify-center">
         {products.map((product) => (
           <ProductCard key={product.id} {...product} />
@@ -42,4 +42,4 @@ const Campaign = () => {
   );
 };
 
-export default Campaign;
+export default Outlet;

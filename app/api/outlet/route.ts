@@ -19,6 +19,8 @@ export async function GET() {
         products p
       LEFT JOIN 
         campaign c ON p.campaign = c.id
+      WHERE 
+        c.name = 'Outlet'
     `;
 
     const validProducts = validateImgUrl(
