@@ -1,5 +1,4 @@
 "use client";
-import { Badge } from "@/app/components/ui/badge";
 import { IProducts } from "@/app/types/products";
 import React, { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
@@ -55,7 +54,7 @@ const SingleProduct = ({ params }: { params: { slug: string } }) => {
   return (
     <div className="m-2 p-2 lg:w-2/3">
       <div className="flex flex-col md:flex-row items-center justify-around m-2">
-        <div className="shadow-md p-2">
+        <div className="shadow-md p-2 bg-white">
           <div className="flex-shrink-0 h-56 md:h-80">
             {
               <Image
