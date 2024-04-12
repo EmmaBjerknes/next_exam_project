@@ -5,8 +5,11 @@ import Image from "next/image";
 import PriceBox from "@/app/components/Cards/components/PriceBox";
 import { Button } from "@/app/components/ui/button";
 import ValidBadge from "@/app/components/Cards/components/ValidBadge";
+import { useRouter } from "next/navigation";
+import { IoCaretBack } from "react-icons/io5";
 
 const SingleProduct = ({ params }: { params: { slug: string } }) => {
+  const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [product, setProduct] = useState<IProducts>({
     id: "",
@@ -52,47 +55,56 @@ const SingleProduct = ({ params }: { params: { slug: string } }) => {
 
   if (loading) return <div>Loading...</div>;
   return (
-    <div className="m-2 p-2 lg:w-2/3">
-      <div className="flex flex-col md:flex-row items-center justify-around m-2">
-        <div className="shadow-md p-2 bg-white">
-          <div className="flex-shrink-0 h-56 md:h-80">
-            {
-              <Image
-                src={`https://www.mcdn.net${product.productimage}`}
-                alt={`Produktbild av ${product.name}`}
-                className="object-contain w-full h-full"
-                width={0}
-                height={0}
-                priority={true}
-                sizes="(max-width: 768px) 100vw, 33vw"
-              />
-            }
+    <>
+      <div className="w-full">
+        <Button variant={"navBack"} onClick={() => router.back()}>
+          <IoCaretBack />
+          Tillbaka
+        </Button>
+      </div>
+
+      <div className="m-2 p-2 lg:w-2/3">
+        <div className="flex flex-col md:flex-row items-center justify-around m-2">
+          <div className="shadow-md p-2 bg-white">
+            <div className="flex-shrink-0 h-56 md:h-80">
+              {
+                <Image
+                  src={`https://www.mcdn.net${product.productimage}`}
+                  alt={`Produktbild av ${product.name}`}
+                  className="object-contain w-full h-full"
+                  width={0}
+                  height={0}
+                  priority={true}
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+              }
+            </div>
+          </div>
+
+          <div className="flex flex-col m-2 justify-between items-center text-center md:gap-3">
+            <h3>{productNameArray[0]}</h3>
+
+            <ValidBadge {...product} />
+
+            <div className="flex flex-col gap-2 my-4 text-center">
+              <PriceBox {...product} />
+            </div>
+
+            <Button
+              variant={"addToCart"}
+              onClick={() => console.log("add to cart", product.id)}
+            >
+              Lägg i varukorg
+            </Button>
           </div>
         </div>
 
-        <div className="flex flex-col m-2 justify-between items-center text-center md:gap-3">
-          <h3>{productNameArray[0]}</h3>
-
-          <ValidBadge {...product} />
-
-          <div className="flex flex-col gap-2 my-4 text-center">
-            <PriceBox {...product} />
-          </div>
-
-          <Button
-            variant={"addToCart"}
-            onClick={() => console.log("add to cart", product.id)}
-          >
-            Lägg i varukorg
-          </Button>
+        <div className="flex flex-col mt-4 justify-between p-4">
+          <h3>{product.name}</h3>
+          <div>{product.description}</div>
         </div>
       </div>
-
-      <div className="flex flex-col mt-4 justify-between p-4">
-        <h3>{product.name}</h3>
-        <div>{product.description}</div>
-      </div>
-    </div>
+    </>
   );
 };
 
