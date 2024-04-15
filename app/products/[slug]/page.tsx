@@ -1,14 +1,16 @@
 "use client";
 import { IProducts } from "@/app/types/products";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import Image from "next/image";
 import PriceBox from "@/app/components/Cards/components/PriceBox";
 import { Button } from "@/app/components/ui/button";
 import ValidBadge from "@/app/components/Cards/components/ValidBadge";
 import { useRouter } from "next/navigation";
 import { IoCaretBack } from "react-icons/io5";
+import { CartContext } from "@/app/utils/CartContext";
 
 const SingleProduct = ({ params }: { params: { slug: string } }) => {
+  const { addToCart } = useContext(CartContext);
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [product, setProduct] = useState<IProducts>({
@@ -90,10 +92,7 @@ const SingleProduct = ({ params }: { params: { slug: string } }) => {
               <PriceBox {...product} />
             </div>
 
-            <Button
-              variant={"addToCart"}
-              onClick={() => console.log("add to cart", product.id)}
-            >
+            <Button variant={"addToCart"} onClick={() => addToCart(product)}>
               Lägg i varukorg
             </Button>
           </div>
