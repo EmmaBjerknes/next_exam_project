@@ -1,9 +1,11 @@
 "use client";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Image from "next/image";
 import Panel from "./Panel/Panel";
 import Link from "next/link";
-import { MdMenu, MdOutlineShoppingCart } from "react-icons/md";
+import { MdMenu } from "react-icons/md";
+import CartButton from "./Cart/CartButton";
+import { CartContext } from "../utils/CartContext";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,6 +14,11 @@ const Header = () => {
     setIsOpen(!isOpen);
   };
 
+  const { cart } = useContext(CartContext);
+  const totalInCart = cart.reduce(
+    (total, product) => total + product.quantity,
+    0
+  );
   return (
     <header className="flex flex-row items-center justify-between p-4 relative top-0 bg-white gap-4">
       <div className="container gap-4 flex items-center">
@@ -25,16 +32,7 @@ const Header = () => {
           <Link href="/">Essence</Link>
         </h1>
       </div>
-      <div>
-        <button
-          className="p-1 hover:bg-purple-200 transition-colors duration-300 rounded-full"
-          title="cart"
-        >
-          <Link href="/cart">
-            <MdOutlineShoppingCart size={"2rem"} />
-          </Link>
-        </button>
-      </div>
+      <CartButton itemsInCart={totalInCart} />
       <div>
         <button
           onClick={togglePanel}
