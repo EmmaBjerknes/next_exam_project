@@ -3,13 +3,33 @@ import { Button } from "../ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { IoMdTrash } from "react-icons/io";
 import Image from "next/image";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CartContext } from "@/app/utils/CartContext";
 import Stepper from "../ui/stepper";
+import AlertDialog from "../AlertDialog";
+import { CartProduct } from "@/app/types/cart";
 
 const CartList = () => {
   const { cart, addToCart, subtractFromCart, removeProductFromCart } =
     useContext(CartContext);
+
+  const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
+  const [itemToRemove, setItemToRemove] = useState<CartProduct>();
+
+  const openConfirmation = (item: CartProduct) => {
+    setItemToRemove(item);
+    setIsConfirmationOpen(true);
+  };
+  const handleConfirmRemoval = () => {
+    if (itemToRemove) {
+      removeProductFromCart(itemToRemove);
+      setIsConfirmationOpen(false);
+    }
+  };
+  const handleCancelRemoval = () => {
+    setIsConfirmationOpen(false);
+  };
+
   return (
     <Card>
       <CardHeader>
@@ -52,17 +72,26 @@ const CartList = () => {
                   onAdd={() => addToCart(item)}
                 />
               </div>
-              <Button size="sm">
-                <IoMdTrash
-                  className="h-4 w-4"
-                  onClick={() => removeProductFromCart(item)}
-                />
+              <Button
+                size="sm"
+                variant={"remove"}
+                title="Ta bort"
+                onClick={() => openConfirmation(item)}
+              >
+                <IoMdTrash />
               </Button>
             </div>
             <hr />
           </div>
         ))}
       </CardContent>
+      {isConfirmationOpen && (
+        <AlertDialog
+          message={"Är du säker på att du vill ta bort produkten?"}
+          onConfirm={handleConfirmRemoval}
+          onCancel={handleCancelRemoval}
+        />
+      )}
     </Card>
   );
 };
