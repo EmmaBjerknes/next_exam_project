@@ -7,6 +7,7 @@ export const CartContext = createContext<CartContextValue>({
   cart: [],
   addToCart: () => {},
   subtractFromCart: () => {},
+  removeProductFromCart: () => {},
 });
 
 interface LayoutProps {
@@ -54,19 +55,40 @@ export const CartProvider = ({ children }: LayoutProps) => {
   };
 
   const subtractFromCart = (product: CartProduct) => {
-    const updatedCart = cart.map((cartProduct) => {
-      if (cartProduct.id === product.id) {
-        return { ...cartProduct, quantity: cartProduct.quantity - 1 };
-      } else {
-        return cartProduct;
-      }
-    });
+    const updatedCart = [...cart];
+    const productIndex = updatedCart.findIndex(
+      (cartProduct) => cartProduct.id === product.id
+    );
+
+    const updatedProduct = { ...updatedCart[productIndex] };
+    updatedProduct.quantity -= 1;
+
+    if (updatedProduct.quantity <= 0) {
+      updatedCart.splice(productIndex, 1);
+    } else {
+      updatedCart[productIndex] = updatedProduct;
+    }
+
+    setCart(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+  };
+
+  const removeProductFromCart = (product: CartProduct) => {
+    const updatedCart = [...cart];
+    const productIndex = updatedCart.findIndex(
+      (cartProduct) => cartProduct.id === product.id
+    );
+
+    updatedCart.splice(productIndex, 1);
+
     setCart(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, subtractFromCart }}>
+    <CartContext.Provider
+      value={{ cart, addToCart, subtractFromCart, removeProductFromCart }}
+    >
       {children}
     </CartContext.Provider>
   );

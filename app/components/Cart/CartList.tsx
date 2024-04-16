@@ -8,7 +8,8 @@ import { CartContext } from "@/app/utils/CartContext";
 import Stepper from "../ui/stepper";
 
 const CartList = () => {
-  const { cart, addToCart, subtractFromCart } = useContext(CartContext);
+  const { cart, addToCart, subtractFromCart, removeProductFromCart } =
+    useContext(CartContext);
   return (
     <Card>
       <CardHeader>
@@ -52,8 +53,10 @@ const CartList = () => {
                 />
               </div>
               <Button size="sm">
-                <IoMdTrash className="h-4 w-4" />
-                <span className="sr-only">Remove</span>
+                <IoMdTrash
+                  className="h-4 w-4"
+                  onClick={() => removeProductFromCart(item)}
+                />
               </Button>
             </div>
             <hr />
