@@ -5,9 +5,10 @@ import { IoMdTrash } from "react-icons/io";
 import Image from "next/image";
 import { useContext } from "react";
 import { CartContext } from "@/app/utils/CartContext";
+import Stepper from "../ui/stepper";
 
 const CartList = () => {
-  const { cart } = useContext(CartContext);
+  const { cart, addToCart, subtractFromCart } = useContext(CartContext);
   return (
     <Card>
       <CardHeader>
@@ -44,9 +45,11 @@ const CartList = () => {
                 ) : (
                   <div className="font-semibold">{item.price} kr</div>
                 )}
-
-                <div>Antal: {item.quantity}</div>
-                {/* Dropdown */}
+                <Stepper
+                  amount={item.quantity}
+                  onSubtract={() => subtractFromCart(item)}
+                  onAdd={() => addToCart(item)}
+                />
               </div>
               <Button size="sm">
                 <IoMdTrash className="h-4 w-4" />

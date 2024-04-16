@@ -11,4 +11,5 @@ export interface CartProduct {
 export interface CartContextValue {
   cart: CartProduct[];
   addToCart: (product: IProduct) => void;
+  subtractFromCart: (product: CartProduct) => void;
 }

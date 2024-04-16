@@ -6,6 +6,7 @@ import { IProducts } from "../types/products";
 export const CartContext = createContext<CartContextValue>({
   cart: [],
   addToCart: () => {},
+  subtractFromCart: () => {},
 });
 
 interface LayoutProps {
@@ -52,8 +53,20 @@ export const CartProvider = ({ children }: LayoutProps) => {
     }
   };
 
+  const subtractFromCart = (product: CartProduct) => {
+    const updatedCart = cart.map((cartProduct) => {
+      if (cartProduct.id === product.id) {
+        return { ...cartProduct, quantity: cartProduct.quantity - 1 };
+      } else {
+        return cartProduct;
+      }
+    });
+    setCart(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+  };
+
   return (
-    <CartContext.Provider value={{ cart, addToCart }}>
+    <CartContext.Provider value={{ cart, addToCart, subtractFromCart }}>
       {children}
     </CartContext.Provider>
   );
