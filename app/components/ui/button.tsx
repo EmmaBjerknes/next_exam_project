@@ -18,6 +18,8 @@ const buttonVariants = cva(
         remove: "rounded-full hover:bg-red-300 transition-colors",
         confirm: "bg-green-300 font-semibold",
         cancel: "bg-red-300 font-semibold",
+        checkoutFlowButton:
+          "border-input bg-[var(--badge-secondary)] drop-shadow-md hover:filter-none",
       },
       size: {
         default: "h-10 px-4 py-2",
