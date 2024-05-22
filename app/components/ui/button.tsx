@@ -12,13 +12,18 @@ const buttonVariants = cva(
         addToCart:
           "border-input bg-black drop-shadow-md text-white hover:filter-none",
         carousel:
-          "absolute  h-8 w-8 rounded-full hover:bg-[var(--badge-secondary)]",
+          "absolute h-8 w-8 rounded-full hover:bg-[var(--badge-secondary)]",
         cta: "border-input bg-[var(--badge-primary)] font-semibold drop-shadow-md hover:filter-none",
         navBack: "decoration-[var(--badge-secondary)] hover:underline",
+        remove: "rounded-full hover:bg-red-300 transition-colors",
+        confirm: "bg-green-300 font-semibold",
+        cancel: "bg-red-300 font-semibold",
+        checkoutFlowButton:
+          "border-input bg-[var(--badge-secondary)] drop-shadow-md hover:filter-none",
       },
       size: {
         default: "h-10 px-4 py-2",
-        sm: "h-9 rounded-md px-3",
+        sm: "p-2",
         lg: "h-11 rounded-md px-8",
         icon: "h-10 w-10",
       },

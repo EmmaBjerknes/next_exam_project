@@ -14,7 +14,7 @@ const ProductCard = (product: IProducts) => {
   return (
     <div
       onClick={() => router.push("/products/" + product.id)}
-      className="flex flex-col m-2 justify-between items-center bg-white shadow-md p-2 text-center cursor-pointer w-52 lg:w-72 lg:h-96"
+      className="flex flex-col m-2 justify-between items-center bg-white shadow-md p-2 text-center cursor-pointer w-48 lg:w-72 h-96"
     >
       <div className="flex self-start">
         {product.campaign_name === "Rea!" && (

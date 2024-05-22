@@ -3,9 +3,9 @@ import React from "react";
 import type { Metadata } from "next";
 import MainHeader from "./components/MainHeader";
 import Footer from "./components/Footer";
-
 import { getServerSession } from "next-auth";
 import SessionProvider from "./components/SessionProvider";
+import { CartProvider } from "./utils/CartContext";
 
 export const metadata: Metadata = {
   title: "Essence",
@@ -22,13 +22,15 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <SessionProvider session={session}>
-        <body>
-          <MainHeader />
-          <main className="flex min-h-screen flex-col gap-y-12 items-center xl:p-12 sm:p-2 mt-6">
-            {children}
-          </main>
-          <Footer />
-        </body>
+        <CartProvider>
+          <body>
+            <MainHeader />
+            <main className="flex min-h-screen flex-col gap-y-12 items-center xl:p-12 sm:p-2 mt-6">
+              {children}
+            </main>
+            <Footer />
+          </body>
+        </CartProvider>
       </SessionProvider>
     </html>
   );
