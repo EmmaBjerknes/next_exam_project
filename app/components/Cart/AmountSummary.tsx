@@ -15,36 +15,42 @@ interface IProps {
 
 const AmountSummary = (props: IProps) => {
   const { cart } = useContext(CartContext);
-  const { user, setUser } = useUserInfo();
+  const { user } = useUserInfo();
 
-  const calculateTotals = useCallback((items: CartProduct[]) => {
-    let newTotalPrice = 0;
-    let newTotalOriginalPrice = 0;
-    let newTotalDiscount = 0;
+  const calculateTotals = useCallback(
+    (items: CartProduct[]) => {
+      let newTotalPrice = 0;
+      let newTotalOriginalPrice = 0;
+      let newTotalDiscount = 0;
 
-    items.forEach((item) => {
-      const { quantity, price, discountPrice, campaign_discount_percent } =
-        item;
+      items.forEach((item) => {
+        const { quantity, price, discountPrice, campaign_discount_percent } =
+          item;
 
-      newTotalPrice += discountPrice
-        ? quantity * discountPrice
-        : quantity * price;
+        newTotalPrice += discountPrice
+          ? quantity * discountPrice
+          : quantity * price;
 
-      newTotalOriginalPrice += quantity * price;
+        newTotalOriginalPrice += quantity * price;
 
-      if (campaign_discount_percent) {
-        newTotalDiscount += Math.floor(
-          quantity * price * (campaign_discount_percent / 100)
-        );
-      }
-    });
+        if (campaign_discount_percent) {
+          newTotalDiscount += Math.floor(
+            quantity * price * (campaign_discount_percent / 100)
+          );
+        }
+        if (user?.delivery) {
+          newTotalPrice += parseInt(user.delivery, 10);
+        }
+      });
 
-    return {
-      totalPrice: newTotalPrice,
-      totalOriginalPrice: newTotalOriginalPrice,
-      newTotalDiscount,
-    };
-  }, []);
+      return {
+        totalPrice: newTotalPrice,
+        totalOriginalPrice: newTotalOriginalPrice,
+        newTotalDiscount,
+      };
+    },
+    [user?.delivery]
+  );
 
   const [totals, setTotals] = useState({
     totalPrice: 0,
