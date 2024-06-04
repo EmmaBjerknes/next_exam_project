@@ -1,13 +1,13 @@
 interface User {
-  delivery?: string;
-  firstName: string;
-  lastName: string;
+  delivery?: "0" | "149";
+  firstName?: string;
+  lastName?: string;
   co?: string;
-  address: string;
+  address?: string;
   postnumber?: number;
-  city: string;
+  city?: string;
   phonenumber?: number;
-  email: string;
+  email?: string;
 }
 
 interface UserContextValue {
