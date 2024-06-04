@@ -7,23 +7,12 @@ import {
   ReactNode,
 } from "react";
 
-export interface User {
-  firstName?: string;
-  lastName?: string;
-  delivery?: string;
-}
-
-export interface UserContextValue {
-  user: User | null;
-  setUser: React.Dispatch<React.SetStateAction<User | null>>;
-}
-
 const UserContext = createContext<UserContextValue | undefined>(undefined);
 
 export const useUserInfo = () => {
   const context = useContext(UserContext);
   if (!context) {
-    throw new Error("");
+    throw new Error("useUserInfo must be used within a UserProvider");
   }
   return context;
 };
@@ -33,10 +22,14 @@ interface LayoutProps {
 }
 
 export const UserProvider = ({ children }: LayoutProps) => {
-  const [user, setUser] = useState<User | null>(() => {
+  const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
     const storedUser = localStorage.getItem("user");
-    return storedUser ? JSON.parse(storedUser) : null;
-  });
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
 
   useEffect(() => {
     if (user) {
@@ -45,19 +38,6 @@ export const UserProvider = ({ children }: LayoutProps) => {
       localStorage.removeItem("user");
     }
   }, [user]);
-
-  useEffect(() => {
-    const handleStorageChange = (e: StorageEvent) => {
-      if (e.key === "user") {
-        setUser(e.newValue ? JSON.parse(e.newValue) : null);
-      }
-    };
-
-    window.addEventListener("storage", handleStorageChange);
-    return () => {
-      window.removeEventListener("storage", handleStorageChange);
-    };
-  }, []);
 
   return (
     <UserContext.Provider value={{ user, setUser }}>
