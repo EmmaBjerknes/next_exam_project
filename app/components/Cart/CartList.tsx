@@ -75,14 +75,13 @@ const CartList = () => {
                 </div>
                 <Button
                   size="sm"
-                  variant={"remove"}
+                  variant="destructive"
                   title="Ta bort"
                   onClick={() => openConfirmation(item)}
                 >
                   <IoMdTrash />
                 </Button>
               </div>
-              <hr />
             </div>
           ))
         ) : (

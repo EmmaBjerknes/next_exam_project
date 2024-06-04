@@ -9,12 +9,12 @@ interface IProps {
 
 const Stepper = ({ amount, onSubtract, onAdd }: IProps) => {
   return (
-    <div className="flex items-center gap-1 border w-fit rounded-full ">
-      <Button size="sm" onClick={onSubtract}>
+    <div className="flex items-center gap-1 w-fit rounded-full ">
+      <Button size="sm" variant="stepper" onClick={onSubtract}>
         <FaMinus />
       </Button>
       {amount}
-      <Button size="sm" onClick={onAdd}>
+      <Button size="sm" variant="stepper" onClick={onAdd}>
         <FaPlus />
       </Button>
     </div>
