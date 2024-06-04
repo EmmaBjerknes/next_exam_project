@@ -83,9 +83,9 @@ const CustomerInformation = () => {
       lastName: values.lastName,
       co: values.co,
       address: values.address,
-      postNumber: values.postnumber,
+      postnumber: values.postnumber,
       city: values.city,
-      phoneNumber: values.phonenumber,
+      phonenumber: values.phonenumber,
       email: values.email,
     };
     setUser(updatedUser);
