@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Form,
   FormControl,
@@ -76,6 +76,22 @@ const CustomerInformation = () => {
       email: "",
     },
   });
+
+  useEffect(() => {
+    if (user) {
+      form.reset({
+        firstName: user.firstName || "",
+        lastName: user.lastName || "",
+        co: user.co || "",
+        address: user.address || "",
+        postnumber: user.postnumber || ("" as any),
+        city: user.city || "",
+        phonenumber: user.phonenumber || ("" as any),
+        email: user.email || "",
+      });
+    }
+  }, [form, user]);
+
   function onSubmit(values: z.infer<typeof formSchema>) {
     const updatedUser = {
       ...user,
@@ -92,6 +108,7 @@ const CustomerInformation = () => {
     localStorage.setItem("user", JSON.stringify(updatedUser));
     router.push("/cart/payment");
   }
+
   return (
     <Card className="w-[90%] max-w-md">
       <CardHeader>
