@@ -1,5 +1,5 @@
 "use client";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Image from "next/image";
 import Panel from "./Panel/Panel";
 import Link from "next/link";
@@ -9,16 +9,17 @@ import { CartContext } from "../utils/CartContext";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { cart } = useContext(CartContext);
 
   const togglePanel = () => {
     setIsOpen(!isOpen);
   };
 
-  const { cart } = useContext(CartContext);
   const totalInCart = cart.reduce(
     (total, product) => total + product.quantity,
     0
   );
+
   return (
     <header className="flex flex-row items-center justify-between p-4 relative top-0 bg-white gap-4">
       <div className="container gap-4 flex items-center">

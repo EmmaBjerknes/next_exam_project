@@ -4,21 +4,23 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/app/lib/cnHelper";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-3xl text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed",
+  "inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed",
   {
     variants: {
       variant: {
         default: "bg-primary text-primary-foreground hover:bg-primary/90",
-        destructive: "text-black hover:bg-destructive/60",
+        destructive:
+          "text-black hover:bg-destructive/60 hover:text-white rounded-full",
+        outline: "decoration-[var(--badge-secondary)] hover:underline",
         addToCart:
-          "border-input bg-black drop-shadow-md text-white hover:filter-none",
+          "border-input bg-lime-500 drop-shadow-md text-black font-bold w-40 hover:filter-none",
         carousel:
           "absolute h-8 w-8 rounded-full hover:bg-[var(--badge-secondary)]",
         cta: "border-input bg-[var(--badge-primary)] font-semibold drop-shadow-md hover:filter-none",
         navBack: "decoration-[var(--badge-secondary)] hover:underline",
-        confirm: "bg-green-300 font-semibold",
+        confirm: "bg-lime-500 font-semibold",
         cancel: "bg-red-300 font-semibold",
-        stepper: "bg-white text-black hover:bg-secondary",
+        stepper: "bg-white text-black rounded-full hover:bg-secondary",
       },
       size: {
         default: "h-10 px-4 py-2",

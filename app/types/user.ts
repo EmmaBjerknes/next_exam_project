@@ -1,5 +1,5 @@
 interface User {
-  delivery?: "0" | "149";
+  delivery?: string;
   firstName?: string;
   lastName?: string;
   co?: string;
@@ -8,7 +8,7 @@ interface User {
   city?: string;
   phonenumber?: number;
   email?: string;
-  payment?: "card" | "instore";
+  payment?: string;
 }
 
 interface UserContextValue {

@@ -67,12 +67,12 @@ const AmountSummary = (props: IProps) => {
   return (
     <Card className="h-fit">
       <CardContent className="p-6">
-        <div className="flex flex-col gap-1 text-sm">
+        <div className="flex flex-col gap-1 text-lg">
           <div className="flex items-center gap-2">
             <div>Ordinarie pris:</div>
             <div className="ml-auto">{totals.totalOriginalPrice} kr</div>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 text-red-600">
             <div>Rabatt:</div>
 
             <div className="ml-auto text-red-600">
@@ -90,7 +90,7 @@ const AmountSummary = (props: IProps) => {
           <hr />
           <div className="flex items-center font-semibold">
             <h3>Total</h3>
-            <div className="ml-auto">{totals.totalPrice} kr</div>
+            <div className="ml-auto text-xl">{totals.totalPrice} kr</div>
           </div>
           <div className="flex items-center gap-2 text-sm text-gray-700 ">
             <div>Varav moms:</div>

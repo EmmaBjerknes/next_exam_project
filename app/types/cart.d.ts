@@ -13,4 +13,5 @@ export interface CartContextValue {
   addToCart: (product: IProduct) => void;
   subtractFromCart: (product: CartProduct) => void;
   removeProductFromCart: (prduct: CartProduct) => void;
+  clearCart: () => void;
 }

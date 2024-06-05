@@ -2,12 +2,14 @@
 import { createContext, useEffect, useState } from "react";
 import { CartContextValue, CartProduct } from "../types/cart";
 import { IProducts } from "../types/products";
+import toast from "react-hot-toast";
 
 export const CartContext = createContext<CartContextValue>({
   cart: [],
   addToCart: () => {},
   subtractFromCart: () => {},
   removeProductFromCart: () => {},
+  clearCart: () => {},
 });
 
 interface LayoutProps {
@@ -52,6 +54,7 @@ export const CartProvider = ({ children }: LayoutProps) => {
       setCart(updatedCart);
       localStorage.setItem("cart", JSON.stringify(updatedCart));
     }
+    toast.success("Varan är tillagd i din kundkorg!");
   };
 
   const subtractFromCart = (product: CartProduct) => {
@@ -71,6 +74,9 @@ export const CartProvider = ({ children }: LayoutProps) => {
 
     setCart(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
+    toast("Varan togs bort ur din kundkorg", {
+      icon: "❌",
+    });
   };
 
   const removeProductFromCart = (product: CartProduct) => {
@@ -83,11 +89,25 @@ export const CartProvider = ({ children }: LayoutProps) => {
 
     setCart(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
+    toast("Varan togs bort ur din kundkorg", {
+      icon: "❌",
+    });
+  };
+
+  const clearCart = () => {
+    setCart([]);
+    localStorage.removeItem("cart");
   };
 
   return (
     <CartContext.Provider
-      value={{ cart, addToCart, subtractFromCart, removeProductFromCart }}
+      value={{
+        cart,
+        addToCart,
+        subtractFromCart,
+        removeProductFromCart,
+        clearCart,
+      }}
     >
       {children}
     </CartContext.Provider>

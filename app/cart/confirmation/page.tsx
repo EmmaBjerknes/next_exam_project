@@ -1,74 +1,42 @@
 "use client";
-import AmountSummary from "@/app/components/Cart/AmountSummary";
+import React, { useEffect, useContext } from "react";
+import { Card, CardContent } from "@/app/components/ui/card";
 import { CartContext } from "@/app/utils/CartContext";
-import { useUserInfo } from "@/app/utils/UserContext";
-import React, { useContext } from "react";
+import { Button } from "@/app/components/ui/button";
+import Link from "next/link";
 
 const Confirmation = () => {
-  const { cart } = useContext(CartContext);
-  const { user } = useUserInfo();
+  const { clearCart } = useContext(CartContext);
+
+  useEffect(() => {
+    clearCart();
+    localStorage.removeItem("user");
+  }, []);
 
   return (
-    <div className="grid md:grid-cols-[1fr_2fr] gap-8">
-      <div className="bg-white h-fit border border-gray-200 rounded-lg p-6 dark:bg-gray-950 dark:border-gray-800">
-        <h2 className="text-xl font-bold mb-4">Dina uppgifter</h2>
-        <div className="grid gap-2">
-          <div>
-            <span className="font-medium">Namn:</span> {user?.firstName}{" "}
-            {user?.lastName}
-          </div>
-          <div>
-            <span className="font-medium">E-post:</span> {user?.email}
-          </div>
-          <div>
-            <span className="font-medium">Telefon:</span> {user?.phonenumber}
-          </div>
-          <div>
-            <span className="font-medium">Adress:</span>
-            <div>
-              {user?.address}
-              <br />
-              {user?.postnumber} {user?.city}
-            </div>
-          </div>
+    <Card className="w-full max-w-md mx-auto">
+      <CardContent className="p-6 space-y-4">
+        <div className="flex flex-col space-y-2">
+          <h2>Tack för din order!</h2>
+          <p>
+            Jag uppskattar att du har tagit dig tid att gå igenom hela
+            kassaflödet.
+          </p>
+          <Button className="mx-auto">
+            <Link href={"/"}>
+              <h4>Till första sidan</h4>
+            </Link>
+          </Button>
         </div>
-      </div>
-      <div className="bg-white border border-gray-200 rounded-lg p-6 dark:bg-gray-950 dark:border-gray-800">
-        <h2 className="text-xl font-bold mb-4">Översikt</h2>
-
-        <div className="grid gap-6">
-          <div className="grid gap-4">
-            <div className="grid gap-2">
-              <h3 className="font-medium">Produkter</h3>
-              <div className="grid gap-2">
-                {cart.map((item) => (
-                  <div
-                    key={item.id}
-                    className="flex items-center justify-between"
-                  >
-                    <div>{item.name}</div>
-                    <div>
-                      {item.quantity} x{" "}
-                      {item.discountPrice ? item.discountPrice : item.price} kr
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="grid gap-2">
-              <h3 className="font-medium">Betalning</h3>
-              <div className="flex items-center justify-between">
-                <div>Betalningsmetod:</div>
-                <div>
-                  {user?.payment === "card" ? "Kort" : "Betalas i butik"}
-                </div>
-              </div>
-            </div>
-            <AmountSummary path={""} btnText={"Slutför köp"} />
-          </div>
+        <div className="flex justify-end">
+          <p className="text-sm text-gray-500">
+            Med vänliga hälsningar,
+            <br />
+            Essence // Emma
+          </p>
         </div>
-      </div>
-    </div>
+      </CardContent>
+    </Card>
   );
 };
 
