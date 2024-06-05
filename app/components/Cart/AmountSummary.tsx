@@ -99,7 +99,7 @@ const AmountSummary = (props: IProps) => {
         </div>
       </CardContent>
       <CardFooter>
-        <Button disabled={props.showBtn}>
+        <Button disabled={props.showBtn} className="ml-auto">
           <Link href={props.path}>
             <h4>{props.btnText}</h4>
           </Link>

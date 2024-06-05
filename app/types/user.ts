@@ -8,6 +8,7 @@ interface User {
   city?: string;
   phonenumber?: number;
   email?: string;
+  payment?: "card" | "instore";
 }
 
 interface UserContextValue {
