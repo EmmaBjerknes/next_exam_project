@@ -8,6 +8,7 @@ import ValidBadge from "@/app/components/Cards/components/ValidBadge";
 import { useRouter } from "next/navigation";
 import { IoCaretBack } from "react-icons/io5";
 import { CartContext } from "@/app/utils/CartContext";
+import { MdOutlineShoppingCart } from "react-icons/md";
 
 const SingleProduct = ({ params }: { params: { slug: string } }) => {
   const { addToCart } = useContext(CartContext);
@@ -93,7 +94,10 @@ const SingleProduct = ({ params }: { params: { slug: string } }) => {
             </div>
 
             <Button variant={"addToCart"} onClick={() => addToCart(product)}>
-              Lägg i varukorg
+              <div className="flex gap-1 items-center">
+                <MdOutlineShoppingCart className="w-4 h-4 sm:w-6 sm-h-6" />
+                <h3>Köp</h3>
+              </div>
             </Button>
           </div>
         </div>

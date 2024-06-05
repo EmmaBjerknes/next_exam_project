@@ -1,13 +1,13 @@
 "use client";
 import { Button } from "../ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
-import { IoMdTrash } from "react-icons/io";
+import { Card, CardContent } from "../ui/card";
 import Image from "next/image";
 import { useContext, useState } from "react";
 import { CartContext } from "@/app/utils/CartContext";
 import Stepper from "../ui/stepper";
 import AlertDialog from "../AlertDialog";
 import { CartProduct } from "@/app/types/cart";
+import { LuTrash2 } from "react-icons/lu";
 
 const CartList = () => {
   const { cart, addToCart, subtractFromCart, removeProductFromCart } =
@@ -31,10 +31,7 @@ const CartList = () => {
   };
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Din varukorg</CardTitle>
-      </CardHeader>
+    <Card className="h-fit">
       <CardContent>
         {cart.length != 0 ? (
           cart.map((item) => (
@@ -53,11 +50,11 @@ const CartList = () => {
                   }
                 </div>
                 <div className="flex-1 grid gap-1.5">
-                  <div className="font-medium">{item.name}</div>
+                  <div className="font-bold text-lg">{item.name}</div>
 
                   {item.discountPrice ? (
                     <div>
-                      <div className="font-semibold text-red-600">
+                      <div className="font-semibold text-xl text-red-600">
                         {item.discountPrice} kr
                       </div>
                       <div className="text-sm text-gray-500 dark:text-gray-400">
@@ -69,7 +66,11 @@ const CartList = () => {
                   )}
                   <Stepper
                     amount={item.quantity}
-                    onSubtract={() => subtractFromCart(item)}
+                    onSubtract={() =>
+                      item.quantity != 1
+                        ? subtractFromCart(item)
+                        : openConfirmation(item)
+                    }
                     onAdd={() => addToCart(item)}
                   />
                 </div>
@@ -79,9 +80,10 @@ const CartList = () => {
                   title="Ta bort"
                   onClick={() => openConfirmation(item)}
                 >
-                  <IoMdTrash />
+                  <LuTrash2 size={20} />
                 </Button>
               </div>
+              <hr />
             </div>
           ))
         ) : (

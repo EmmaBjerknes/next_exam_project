@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import { getServerSession } from "next-auth";
 import SessionProvider from "./components/SessionProvider";
 import { CartProvider } from "./utils/CartContext";
+import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
   title: "Essence",
@@ -25,6 +26,7 @@ export default async function RootLayout({
         <CartProvider>
           <body>
             <MainHeader />
+            <Toaster position="bottom-right" reverseOrder={false} />
             <main className="flex min-h-screen flex-col gap-y-12 items-center xl:p-12 sm:p-2 mt-6">
               {children}
             </main>
