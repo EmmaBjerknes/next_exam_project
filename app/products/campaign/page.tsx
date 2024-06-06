@@ -1,5 +1,7 @@
 "use client";
 import ProductCard from "@/app/components/Cards/ProductCard";
+import PageTitleDivider from "@/app/components/PageTitleDivider";
+import Spinner from "@/app/components/Spinner";
 import { IProducts } from "@/app/types/products";
 import { calculatePrice } from "@/app/utils/productUtils";
 import React, { useCallback, useEffect, useState } from "react";
@@ -29,15 +31,20 @@ const Campaign = () => {
 
   const products = calculatePrice(data);
 
-  if (loading) return <div>Loading...</div>;
   return (
     <>
-      <h1>Vårens REA!</h1>
-      <div className="flex flex-wrap justify-center">
-        {products.map((product) => (
-          <ProductCard key={product.id} {...product} />
-        ))}
-      </div>
+      <PageTitleDivider title="Kampanj" />
+      {loading ? (
+        <Spinner />
+      ) : (
+        <>
+          <div className="flex flex-wrap justify-center">
+            {products.map((product) => (
+              <ProductCard key={product.id} {...product} />
+            ))}
+          </div>
+        </>
+      )}
     </>
   );
 };

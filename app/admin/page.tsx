@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { isAdmin } from "../lib/auth";
+import Spinner from "../components/Spinner";
 
 export default function AdminPage() {
   const router = useRouter();
@@ -21,7 +22,7 @@ export default function AdminPage() {
   }, [router]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Spinner />;
   }
 
   return (

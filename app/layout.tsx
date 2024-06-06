@@ -27,7 +27,7 @@ export default async function RootLayout({
           <body>
             <MainHeader />
             <Toaster position="bottom-right" reverseOrder={false} />
-            <main className="flex min-h-screen flex-col gap-y-12 items-center xl:p-12 sm:p-2 mt-6">
+            <main className="flex min-h-screen flex-col gap-y-2 items-center xl:p-12 sm:p-2 mt-6">
               {children}
             </main>
             <Footer />

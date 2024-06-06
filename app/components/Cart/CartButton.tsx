@@ -10,7 +10,7 @@ const CartButton = (props: IProps) => {
   return (
     <div className="relative">
       <button
-        className="p-1 hover:bg-purple-200 transition-colors duration-300 rounded-full"
+        className="p-1 hover:bg-[var(--accent-secondary)] transition-colors duration-300 rounded-full"
         title="cart"
       >
         <Link href="/cart" className="flex items-center">

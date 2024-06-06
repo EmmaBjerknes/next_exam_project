@@ -5,8 +5,8 @@ import heroBannerImg from "@/public/heroBannerImg.jpg";
 const HeroImage = () => {
   return (
     <div className="relative">
-      <div className="bg-[var(--badge-primary)] flex justify-center text-center items-center absolute rounded-full right-3 top-3 h-14 w-14 text-sm md:h-32 md:w-32 md:text-2xl">
-        <span>Vår-Rea!</span>
+      <div className="bg-[var(--badge-primary)] flex justify-center text-center items-center absolute rounded-full right-3 top-3 h-16 w-16 text-sm sm:h-28 sm:w-28 sm:text-2xl">
+        <span>Stor REA!</span>
       </div>
 
       <Image

@@ -10,6 +10,7 @@ import {
 } from "@/app/components/ui/carousel";
 import { calculatePrice } from "@/app/utils/productUtils";
 import ProductCard from "./ProductCard";
+import Spinner from "../Spinner";
 
 const ProductsCarousel = () => {
   const [data, setData] = useState<IProducts[]>([]);
@@ -34,7 +35,7 @@ const ProductsCarousel = () => {
     getData();
   }, [getData]);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <Spinner />;
   const firstSevenProducts = data.slice(0, 7);
   const previewProductsData = calculatePrice(firstSevenProducts);
 
@@ -43,7 +44,7 @@ const ProductsCarousel = () => {
       opts={{
         align: "start",
       }}
-      className="w-[90%]"
+      className="w-4/5 mt-4"
     >
       <CarouselContent>
         {previewProductsData.map((product) => (

@@ -3,6 +3,8 @@ import React, { useCallback, useEffect, useState } from "react";
 import { IProducts } from "../types/products";
 import ProductCard from "../components/Cards/ProductCard";
 import { calculatePrice } from "../utils/productUtils";
+import PageTitleDivider from "../components/PageTitleDivider";
+import Spinner from "../components/Spinner";
 
 const Products = () => {
   const [data, setData] = useState<IProducts[]>([]);
@@ -29,15 +31,20 @@ const Products = () => {
 
   const products = calculatePrice(data);
 
-  if (loading) return <div>Loading...</div>;
   return (
     <>
-      <h1>Alla produkter</h1>
-      <div className="flex flex-wrap justify-center">
-        {products.map((product) => (
-          <ProductCard key={product.id} {...product} />
-        ))}
-      </div>
+      <PageTitleDivider title="Produkter" />
+      {loading ? (
+        <Spinner />
+      ) : (
+        <>
+          <div className="flex flex-wrap justify-center">
+            {products.map((product) => (
+              <ProductCard key={product.id} {...product} />
+            ))}
+          </div>
+        </>
+      )}
     </>
   );
 };
