@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { IProducts } from "../types/products";
 import ProductCard from "../components/Cards/ProductCard";
 import { calculatePrice } from "../utils/productUtils";
-import SearchBar from "../components/SearchBar";
+import PageTitleDivider from "../components/PageTitleDivider";
 
 const Products = () => {
   const [data, setData] = useState<IProducts[]>([]);
@@ -30,16 +30,20 @@ const Products = () => {
 
   const products = calculatePrice(data);
 
-  if (loading) return <div>Loading...</div>;
   return (
     <>
-      <h1>Alla produkter</h1>
-      <SearchBar />
-      <div className="flex flex-wrap justify-center">
-        {products.map((product) => (
-          <ProductCard key={product.id} {...product} />
-        ))}
-      </div>
+      <PageTitleDivider title="Produkter" />
+      {loading ? (
+        <div>Loading...</div>
+      ) : (
+        <>
+          <div className="flex flex-wrap justify-center">
+            {products.map((product) => (
+              <ProductCard key={product.id} {...product} />
+            ))}
+          </div>
+        </>
+      )}
     </>
   );
 };

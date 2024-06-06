@@ -36,11 +36,8 @@ const SearchResult = () => {
 
   const products = calculatePrice(data);
 
-  if (loading) return <div>Loading...</div>;
-
   return (
     <>
-      <PageTitleDivider title="Sök" />
       <div className="w-full">
         <Button variant={"navBack"} onClick={() => router.back()}>
           <IoCaretBack />
@@ -48,15 +45,20 @@ const SearchResult = () => {
         </Button>
       </div>
 
-      {products.length <= 0 ? (
-        <div>nope</div>
+      <PageTitleDivider title={`Resultat för "${searchQuery}"`} />
+      {loading ? (
+        <div>Loading...</div>
       ) : (
         <>
-          <div className="flex flex-wrap justify-center">
-            {products.map((product) => (
-              <ProductCard key={product.id} {...product} />
-            ))}
-          </div>{" "}
+          {products.length <= 0 ? (
+            <h4>Tyvärr gav din sökning inga träffar</h4>
+          ) : (
+            <div className="flex flex-wrap justify-center">
+              {products.map((product) => (
+                <ProductCard key={product.id} {...product} />
+              ))}
+            </div>
+          )}
         </>
       )}
     </>

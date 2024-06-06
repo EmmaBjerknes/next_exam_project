@@ -1,5 +1,6 @@
 "use client";
 import ProductCard from "@/app/components/Cards/ProductCard";
+import PageTitleDivider from "@/app/components/PageTitleDivider";
 import { IProducts } from "@/app/types/products";
 import { calculatePrice } from "@/app/utils/productUtils";
 import React, { useCallback, useEffect, useState } from "react";
@@ -29,15 +30,20 @@ const Outlet = () => {
 
   const products = calculatePrice(data);
 
-  if (loading) return <div>Loading...</div>;
   return (
     <>
-      <h1>Outlet</h1>
-      <div className="flex flex-wrap justify-center">
-        {products.map((product) => (
-          <ProductCard key={product.id} {...product} />
-        ))}
-      </div>
+      <PageTitleDivider title="Outlet" />
+      {loading ? (
+        <div>Loading...</div>
+      ) : (
+        <>
+          <div className="flex flex-wrap justify-center">
+            {products.map((product) => (
+              <ProductCard key={product.id} {...product} />
+            ))}
+          </div>
+        </>
+      )}
     </>
   );
 };

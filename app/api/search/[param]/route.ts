@@ -24,7 +24,8 @@ export async function GET(
         LEFT JOIN
           campaign c ON p.campaign = c.id
         WHERE
-          p.name ILIKE ${"%" + productName + "%"};
+          p.name ILIKE ${"%" + productName + "%"}
+          OR p.category ILIKE ${"%" + productName + "%"};
       `;
 
     const validProducts = validateImgUrl(foundProducts.rows as IProducts[]);

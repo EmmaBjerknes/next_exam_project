@@ -23,7 +23,7 @@ export default function Search() {
   };
 
   return (
-    <div className="relative flex flex-1 flex-shrink-0 sm:w-1/3 w-4/5">
+    <div className="relative flex sm:w-1/3 w-4/5 max-h-10">
       <input
         name="search"
         className="block w-full rounded-full border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"

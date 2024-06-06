@@ -6,6 +6,7 @@ import Link from "next/link";
 import { MdMenu } from "react-icons/md";
 import CartButton from "./Cart/CartButton";
 import { CartContext } from "../utils/CartContext";
+import SearchBar from "./SearchBar";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,10 +32,14 @@ const Header = () => {
               alt="essence logo"
               width={160}
               height={100}
+              priority={true}
             />
           </Link>
         </div>
-        <div className="flex gap-2">
+        <div className="hidden sm:contents">
+          <SearchBar />
+        </div>
+        <div className="flex gap-4">
           <CartButton itemsInCart={totalInCart} />
           <button
             onClick={togglePanel}
@@ -45,6 +50,9 @@ const Header = () => {
           </button>
         </div>
         {isOpen && <Panel {...{ togglePanel }} />}
+      </div>
+      <div className="sm:hidden flex justify-center mt-2">
+        <SearchBar />
       </div>
     </header>
   );
