@@ -3,6 +3,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { IProducts } from "../types/products";
 import ProductCard from "../components/Cards/ProductCard";
 import { calculatePrice } from "../utils/productUtils";
+import SearchBar from "../components/SearchBar";
 
 const Products = () => {
   const [data, setData] = useState<IProducts[]>([]);
@@ -33,6 +34,7 @@ const Products = () => {
   return (
     <>
       <h1>Alla produkter</h1>
+      <SearchBar />
       <div className="flex flex-wrap justify-center">
         {products.map((product) => (
           <ProductCard key={product.id} {...product} />
