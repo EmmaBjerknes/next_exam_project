@@ -6,6 +6,8 @@
   --foreground-hex: #dfdcdc;
   --background-start-rgb: 255, 255, 255;
   --background-end-rgb: 212, 176, 248;
+  --primary: #571987;
+  --secondary: #e9d3ff;
 
   --badge-primary: #fffdc1;
   --badge-secondary: #e9d3ff;

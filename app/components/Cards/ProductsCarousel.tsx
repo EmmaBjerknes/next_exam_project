@@ -43,7 +43,7 @@ const ProductsCarousel = () => {
       opts={{
         align: "start",
       }}
-      className="w-[90%]"
+      className="w-4/5"
     >
       <CarouselContent>
         {previewProductsData.map((product) => (

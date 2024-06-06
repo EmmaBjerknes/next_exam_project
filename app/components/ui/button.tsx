@@ -15,7 +15,7 @@ const buttonVariants = cva(
         addToCart:
           "border-input bg-lime-500 drop-shadow-md text-black font-bold w-40 hover:filter-none",
         carousel:
-          "absolute h-8 w-8 rounded-full hover:bg-[var(--badge-secondary)]",
+          "absolute h-6 w-6 rounded-full hover:bg-[var(--primary)] hover:opacity-55 hover:text-white",
         cta: "border-input bg-[var(--badge-primary)] font-semibold drop-shadow-md hover:filter-none",
         navBack: "decoration-[var(--badge-secondary)] hover:underline",
         confirm: "bg-lime-500 font-semibold",

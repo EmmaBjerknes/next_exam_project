@@ -43,7 +43,7 @@ const Header = () => {
           <CartButton itemsInCart={totalInCart} />
           <button
             onClick={togglePanel}
-            className="p-1 hover:bg-purple-200 transition-colors duration-300 rounded-full"
+            className="p-1 hover:bg-[var(--secondary)] transition-colors duration-300 rounded-full"
             title="open menu"
           >
             <MdMenu size={"2rem"} />
@@ -51,7 +51,7 @@ const Header = () => {
         </div>
         {isOpen && <Panel {...{ togglePanel }} />}
       </div>
-      <div className="sm:hidden flex justify-center mt-2">
+      <div className="sm:hidden flex justify-center mt-4">
         <SearchBar />
       </div>
     </header>
