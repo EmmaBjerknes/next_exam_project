@@ -10,6 +10,7 @@ import { IoCaretBack } from "react-icons/io5";
 import { CartContext } from "@/app/utils/CartContext";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import PageTitleDivider from "@/app/components/PageTitleDivider";
+import Spinner from "@/app/components/Spinner";
 
 const SingleProduct = ({ params }: { params: { slug: string } }) => {
   const { addToCart } = useContext(CartContext);
@@ -68,7 +69,7 @@ const SingleProduct = ({ params }: { params: { slug: string } }) => {
 
       <PageTitleDivider title={`${product.name}`} />
       {loading ? (
-        <div>Loading...</div>
+        <Spinner />
       ) : (
         <div className="m-2 p-2 lg:w-2/3">
           <div className="flex flex-col md:flex-row items-center justify-around m-2">

@@ -4,6 +4,7 @@ import { IProducts } from "../types/products";
 import ProductCard from "../components/Cards/ProductCard";
 import { calculatePrice } from "../utils/productUtils";
 import PageTitleDivider from "../components/PageTitleDivider";
+import Spinner from "../components/Spinner";
 
 const Products = () => {
   const [data, setData] = useState<IProducts[]>([]);
@@ -34,7 +35,7 @@ const Products = () => {
     <>
       <PageTitleDivider title="Produkter" />
       {loading ? (
-        <div>Loading...</div>
+        <Spinner />
       ) : (
         <>
           <div className="flex flex-wrap justify-center">

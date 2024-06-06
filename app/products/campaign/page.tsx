@@ -1,6 +1,7 @@
 "use client";
 import ProductCard from "@/app/components/Cards/ProductCard";
 import PageTitleDivider from "@/app/components/PageTitleDivider";
+import Spinner from "@/app/components/Spinner";
 import { IProducts } from "@/app/types/products";
 import { calculatePrice } from "@/app/utils/productUtils";
 import React, { useCallback, useEffect, useState } from "react";
@@ -34,7 +35,7 @@ const Campaign = () => {
     <>
       <PageTitleDivider title="Kampanj" />
       {loading ? (
-        <div>Loading...</div>
+        <Spinner />
       ) : (
         <>
           <div className="flex flex-wrap justify-center">

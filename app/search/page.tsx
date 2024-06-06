@@ -7,6 +7,7 @@ import ProductCard from "../components/Cards/ProductCard";
 import { Button } from "../components/ui/button";
 import { IoCaretBack } from "react-icons/io5";
 import PageTitleDivider from "../components/PageTitleDivider";
+import Spinner from "../components/Spinner";
 
 const SearchResult = () => {
   const router = useRouter();
@@ -47,7 +48,7 @@ const SearchResult = () => {
 
       <PageTitleDivider title={`Resultat för "${searchQuery}"`} />
       {loading ? (
-        <div>Loading...</div>
+        <Spinner />
       ) : (
         <>
           {products.length <= 0 ? (

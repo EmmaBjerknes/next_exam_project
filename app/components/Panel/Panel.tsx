@@ -25,7 +25,7 @@ const Panel = ({ togglePanel }: IProps) => {
         <div className="py-4">
           <button
             onClick={togglePanel}
-            className="p-1 hover:bg-[var(--secondary)] transition-colors duration-300 rounded-full"
+            className="p-1 hover:bg-[var(--accent-secondary)] transition-colors duration-300 rounded-full"
             title="close"
           >
             <IoMdClose size={"2rem"} />
@@ -36,7 +36,7 @@ const Panel = ({ togglePanel }: IProps) => {
             <li key={nav.name} className="mb-4 py-1">
               <Link href={nav.path}>
                 <h4
-                  className="border-b-2 border-b-white hover:border-b-2 hover:border-[var(--secondary)]"
+                  className="border-b-2 border-b-white hover:border-b-2 hover:border-[var(--accent-secondary)]"
                   onClick={togglePanel}
                 >
                   {nav.name}

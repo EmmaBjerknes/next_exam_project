@@ -1,5 +1,5 @@
 "use client";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import Image from "next/image";
 import Panel from "./Panel/Panel";
 import Link from "next/link";
@@ -43,7 +43,7 @@ const Header = () => {
           <CartButton itemsInCart={totalInCart} />
           <button
             onClick={togglePanel}
-            className="p-1 hover:bg-[var(--secondary)] transition-colors duration-300 rounded-full"
+            className="p-1 hover:bg-[var(--accent-secondary)] transition-colors duration-300 rounded-full"
             title="open menu"
           >
             <MdMenu size={"2rem"} />
