@@ -1,36 +1,24 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Mitt Next.js Projekt
 
-## Getting Started
+Välkommen till mitt Next.js-projekt! Detta projekt är en modern webbapplikation byggd med Next.js och en rad andra kraftfulla teknologier. Applikationen inkluderar funktioner som sökning, produktlistning, och dynamiska sidövergångar.
 
-First, run the development server:
+### Funktioner
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Sökfunktion**: Sök produkter med hjälp av nyckelord.
+- **Produktlistning**: Visa en lista över produkter med detaljer.
+- **Dynamiska Sidövergångar**: Smidiga övergångar mellan olika sidor.
+- **Mobilanpassning**: Responsiv design för olika skärmstorlekar.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Teknologier
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Projektet är byggt med följande teknologier:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- [Next.js](https://nextjs.org/)
+- [React](https://reactjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Vercel Postgres](https://vercel.com/docs/storage/vercel-postgres)
+- [React Icons](https://react-icons.github.io/react-icons/)
 
-## Learn More
+## Besök sidan
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Projektet finns att testa live [här](https://next-exam-project.vercel.app/)
