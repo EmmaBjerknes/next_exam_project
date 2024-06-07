@@ -23,48 +23,52 @@ const Delivery = () => {
   };
 
   return (
-    <div>
-      <NavHomeButton />
-      <h2>Välj leveranssätt</h2>
-      <div className="flex flex-col gap-8 p-4 mt-2 md:mt-8 justify-around md:flex-row">
-        <Card className="h-fit">
-          <CardContent className="p-6">
-            <RadioGroup defaultValue="">
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem
-                  value="0"
-                  onClick={(event) => onSubmit(event.currentTarget.value)}
-                />
-                <Label>
-                  <div className="flex gap-2 items-center text-lg">
-                    <FaStoreAlt size={24} />
-                    Hämta i butik - 0kr
-                  </div>
-                </Label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem
-                  value="149"
-                  onClick={(event) => onSubmit(event.currentTarget.value)}
-                />
-                <Label>
-                  <div className="flex gap-2 items-center text-lg">
-                    <MdOutlineLocalShipping size={24} />
-                    Hemleverans - 149kr
-                  </div>
-                </Label>
-              </div>
-            </RadioGroup>
-          </CardContent>
-        </Card>
-        <AmountSummary
-          btnText="Gå vidare till kunduppgifter"
-          path="/cart/customerInformation"
-          showBtn={showbtn}
-        />
+    <>
+      <div className="w-full lg:w-3/5">
+        <NavHomeButton />
       </div>
-      <ProgressBar currentPage={currentPage} />
-    </div>
+      <div>
+        <h2>Välj leveranssätt</h2>
+        <div className="flex flex-col gap-8 p-4 mt-2 justify-around sm:flex-row">
+          <Card className="h-fit">
+            <CardContent className="p-6">
+              <RadioGroup defaultValue="">
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem
+                    value="0"
+                    onClick={(event) => onSubmit(event.currentTarget.value)}
+                  />
+                  <Label>
+                    <div className="flex gap-2 items-center text-lg">
+                      <FaStoreAlt size={24} />
+                      Hämta i butik - 0kr
+                    </div>
+                  </Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem
+                    value="149"
+                    onClick={(event) => onSubmit(event.currentTarget.value)}
+                  />
+                  <Label>
+                    <div className="flex gap-2 items-center text-lg">
+                      <MdOutlineLocalShipping size={24} />
+                      Hemleverans - 149kr
+                    </div>
+                  </Label>
+                </div>
+              </RadioGroup>
+            </CardContent>
+          </Card>
+          <AmountSummary
+            btnText="Gå vidare till kunduppgifter"
+            path="/cart/customerInformation"
+            showBtn={showbtn}
+          />
+        </div>
+        <ProgressBar currentPage={currentPage} />
+      </div>
+    </>
   );
 };
 

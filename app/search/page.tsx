@@ -1,16 +1,14 @@
 "use client";
 import { useCallback, useEffect, useState } from "react";
 import { IProducts } from "../types/products";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { calculatePrice } from "../utils/productUtils";
 import ProductCard from "../components/Cards/ProductCard";
-import { Button } from "../components/ui/button";
-import { IoCaretBack } from "react-icons/io5";
 import PageTitleDivider from "../components/PageTitleDivider";
 import Spinner from "../components/Spinner";
+import NavBackButton from "../components/NavBackButton";
 
 const SearchResult = () => {
-  const router = useRouter();
   const [data, setData] = useState<IProducts[]>([]);
   const [loading, setLoading] = useState(true);
   const searchParams = useSearchParams();
@@ -39,12 +37,7 @@ const SearchResult = () => {
 
   return (
     <>
-      <div className="w-full">
-        <Button variant={"navBack"} onClick={() => router.back()}>
-          <IoCaretBack />
-          Tillbaka
-        </Button>
-      </div>
+      <NavBackButton />
 
       <PageTitleDivider title={`Resultat för "${searchQuery}"`} />
       {loading ? (

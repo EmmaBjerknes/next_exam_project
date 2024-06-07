@@ -1,5 +1,5 @@
 "use client";
-import React, { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { IProducts } from "../types/products";
 import ProductCard from "../components/Cards/ProductCard";
 import { calculatePrice } from "../utils/productUtils";

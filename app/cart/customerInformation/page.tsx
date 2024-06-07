@@ -119,26 +119,57 @@ const CustomerInformation = () => {
   }
 
   return (
-    <div className="mx-2">
-      <NavHomeButton />
-      <h2> Kunduppgifter </h2>
-      <h4>
-        Vänligen fyll i dina personuppgifter så att ditt köp kan kopplas till
-        dig.
-      </h4>
+    <>
+      <div className="w-full lg:w-3/5">
+        <NavHomeButton />
+      </div>
+      <div className="mx-4">
+        <h2> Kunduppgifter </h2>
+        <h4>
+          Vänligen fyll i dina personuppgifter så att ditt köp kan kopplas till
+          dig.
+        </h4>
 
-      <Card className="w-[90%] max-w-md gap-8 mt-2 sm:mt-8 mx-auto">
-        <Form {...form}>
-          <CardContent className="p-6">
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <Card className="w-[90%] max-w-md gap-8 mt-2 sm:mt-8 mx-auto">
+          <Form {...form}>
+            <CardContent className="p-6">
+              <form
+                onSubmit={form.handleSubmit(onSubmit)}
+                className="space-y-8"
+              >
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <FormField
+                    control={form.control}
+                    name="firstName"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormControl>
+                          <Input placeholder="Förnamn" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="lastName"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormControl>
+                          <Input placeholder="Efternamn" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
                 <FormField
                   control={form.control}
-                  name="firstName"
+                  name="co"
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>
-                        <Input placeholder="Förnamn" {...field} />
+                        <Input placeholder="C/O" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -146,50 +177,54 @@ const CustomerInformation = () => {
                 />
                 <FormField
                   control={form.control}
-                  name="lastName"
+                  name="address"
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>
-                        <Input placeholder="Efternamn" {...field} />
+                        <Input placeholder="Adress" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
-              </div>
-              <FormField
-                control={form.control}
-                name="co"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <Input placeholder="C/O" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="address"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <Input placeholder="Adress" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                  <FormField
+                    control={form.control}
+                    name="postnumber"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormControl>
+                          <Input
+                            placeholder="Postnummer"
+                            type="number"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="city"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormControl>
+                          <Input placeholder="Ort" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
                 <FormField
                   control={form.control}
-                  name="postnumber"
+                  name="phonenumber"
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>
                         <Input
-                          placeholder="Postnummer"
+                          placeholder="Mobilnummer"
                           type="number"
                           {...field}
                         />
@@ -200,56 +235,28 @@ const CustomerInformation = () => {
                 />
                 <FormField
                   control={form.control}
-                  name="city"
+                  name="email"
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>
-                        <Input placeholder="Ort" {...field} />
+                        <Input placeholder="Epost" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
-              </div>
-              <FormField
-                control={form.control}
-                name="phonenumber"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <Input
-                        placeholder="Mobilnummer"
-                        type="number"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <Input placeholder="Epost" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <CardFooter className="p-0">
-                <Button type="submit" className="ml-auto">
-                  <h4>Gå vidare till betalningssätt</h4>
-                </Button>
-              </CardFooter>
-            </form>
-          </CardContent>
-        </Form>
-      </Card>
-      <ProgressBar currentPage={currentPage} />
-    </div>
+                <CardFooter className="p-0">
+                  <Button type="submit" className="ml-auto">
+                    <h4>Gå vidare till betalningssätt</h4>
+                  </Button>
+                </CardFooter>
+              </form>
+            </CardContent>
+          </Form>
+        </Card>
+        <ProgressBar currentPage={currentPage} />
+      </div>
+    </>
   );
 };
 

@@ -6,7 +6,7 @@ const PriceBox = (data: IProducts) => {
       {data.campaign_discount_percent ? (
         <>
           <p>Ord. {data.price} kr</p>
-          <h3 className="text-red-600">{data.discountPrice} kr</h3>
+          <h2 className="text-red-600">{data.discountPrice} kr</h2>
         </>
       ) : (
         <h3>{data.price} kr</h3>
