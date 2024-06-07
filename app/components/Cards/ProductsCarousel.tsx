@@ -11,6 +11,9 @@ import {
 import { calculatePrice } from "@/app/utils/productUtils";
 import ProductCard from "./ProductCard";
 import Spinner from "../Spinner";
+import { Button } from "../ui/button";
+import Link from "next/link";
+import { IoCaretForward } from "react-icons/io5";
 
 const ProductsCarousel = () => {
   const [data, setData] = useState<IProducts[]>([]);
@@ -40,22 +43,36 @@ const ProductsCarousel = () => {
   const previewProductsData = calculatePrice(firstSevenProducts);
 
   return (
-    <Carousel
-      opts={{
-        align: "start",
-      }}
-      className="w-4/5 mt-4"
-    >
-      <CarouselContent>
-        {previewProductsData.map((product) => (
-          <CarouselItem key={product.id}>
-            <ProductCard key={product.id} {...product} />
-          </CarouselItem>
-        ))}
-      </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
-    </Carousel>
+    <div className="flex flex-col w-5/6">
+      <Carousel
+        opts={{
+          align: "start",
+        }}
+        className="w-full mt-4"
+      >
+        <CarouselContent>
+          {previewProductsData.map((product) => (
+            <CarouselItem key={product.id}>
+              <ProductCard key={product.id} {...product} />
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious />
+        <CarouselNext />
+      </Carousel>
+
+      <div className="flex justify-end">
+        <Button variant="outline">
+          <Link
+            href={"/products"}
+            className="flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-medium transition-colors"
+          >
+            <h4>Se alla produkter</h4>
+            <IoCaretForward />
+          </Link>
+        </Button>
+      </div>
+    </div>
   );
 };
 

@@ -1,20 +1,20 @@
 "use client";
 import { IProducts } from "@/app/types/products";
-import React, { useCallback, useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import Image from "next/image";
 import PriceBox from "@/app/components/Cards/components/PriceBox";
 import { Button } from "@/app/components/ui/button";
 import ValidBadge from "@/app/components/Cards/components/ValidBadge";
-import { useRouter } from "next/navigation";
-import { IoCaretBack } from "react-icons/io5";
 import { CartContext } from "@/app/utils/CartContext";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import PageTitleDivider from "@/app/components/PageTitleDivider";
 import Spinner from "@/app/components/Spinner";
+import NavBackButton from "@/app/components/NavBackButton";
+import { Card } from "@/app/components/ui/card";
+import { Separator } from "@/app/components/ui/seperator";
 
 const SingleProduct = ({ params }: { params: { slug: string } }) => {
   const { addToCart } = useContext(CartContext);
-  const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [product, setProduct] = useState<IProducts>({
     id: "",
@@ -60,37 +60,29 @@ const SingleProduct = ({ params }: { params: { slug: string } }) => {
 
   return (
     <>
-      <div className="w-full relative mb-2 sm:absolute sm:left-2 hidden sm:block">
-        <Button variant={"navBack"} onClick={() => router.back()}>
-          <IoCaretBack />
-          Tillbaka
-        </Button>
-      </div>
+      <NavBackButton />
 
-      <PageTitleDivider title={`${product.name}`} />
       {loading ? (
         <Spinner />
       ) : (
-        <div className="m-2 p-2 lg:w-2/3">
-          <div className="flex flex-col md:flex-row items-center justify-around m-2">
-            <div className="shadow-md p-2 bg-white">
-              <div className="flex-shrink-0 h-56 md:h-80">
-                {
-                  <Image
-                    src={`https://www.mcdn.net${product.productimage}`}
-                    alt={`Produktbild av ${product.name}`}
-                    className="object-contain w-full h-full"
-                    width={0}
-                    height={0}
-                    priority={true}
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
-                }
-              </div>
+        <div className="m-2 p-2 ">
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-3 m-4">
+            <div className="flex-shrink-0 h-56 md:h-80">
+              {
+                <Image
+                  src={`https://www.mcdn.net${product.productimage}`}
+                  alt={`Produktbild av ${product.name}`}
+                  className="object-contain w-full h-full"
+                  width={0}
+                  height={0}
+                  priority={true}
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+              }
             </div>
 
-            <div className="flex flex-col m-2 justify-between items-center text-center md:gap-3">
-              <h3>{productNameArray[0]}</h3>
+            <div className="flex flex-col m-2 justify-between items-center text-center gap-2 sm:gap-3">
+              <h2>{productNameArray[0]}</h2>
 
               <ValidBadge {...product} />
 
@@ -107,10 +99,10 @@ const SingleProduct = ({ params }: { params: { slug: string } }) => {
             </div>
           </div>
 
-          <div className="flex flex-col mt-4 justify-between p-4">
-            <h3>{product.name}</h3>
+          <Card className="flex flex-col w-full sm:w-4/5 lg:w-1/2 mx-auto shadow-lg mt-4 p-4">
+            <h3>Beskrivning</h3>
             <div>{product.description}</div>
-          </div>
+          </Card>
         </div>
       )}
     </>

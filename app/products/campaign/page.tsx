@@ -4,7 +4,7 @@ import PageTitleDivider from "@/app/components/PageTitleDivider";
 import Spinner from "@/app/components/Spinner";
 import { IProducts } from "@/app/types/products";
 import { calculatePrice } from "@/app/utils/productUtils";
-import React, { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 const Campaign = () => {
   const [data, setData] = useState<IProducts[]>([]);

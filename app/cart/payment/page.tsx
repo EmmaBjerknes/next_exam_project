@@ -22,57 +22,64 @@ const Payment = () => {
   };
 
   return (
-    <div>
-      <NavHomeButton />
-      <h2>Betalningssätt</h2>
-      <h4>Välj ditt betalningssätt.</h4>
-
-      <div className="flex flex-col gap-8 p-4 mt-2 md:mt-8 justify-around md:flex-row">
-        <Card className="h-fit">
-          <CardContent className="p-6">
-            <RadioGroup defaultValue="" className="grid grid-cols-2 gap-4">
-              <div className=" space-x-2">
-                <RadioGroupItem
-                  value="card"
-                  id="card"
-                  className="peer sr-only"
-                  onClick={(event) => onSubmit(event.currentTarget.value)}
-                />
-                <Label
-                  htmlFor="card"
-                  className="flex flex-col items-center justify-between rounded-md border-2 border-gray-100 bg-white p-4 hover:bg-gray-100 hover:text-gray-900 peer-data-[state=checked]:border-gray-900 [&:has([data-state=checked])]:border-gray-900 dark:border-gray-800 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:peer-data-[state=checked]:border-gray-50 dark:[&:has([data-state=checked])]:border-gray-50"
-                >
-                  <CreditCardIcon className="mb-3 h-6 w-6" />
-                  Kort
-                </Label>
-              </div>
-              <div className="space-x-2">
-                <RadioGroupItem
-                  value="instore"
-                  id="instore"
-                  className="peer sr-only"
-                  onClick={(event) => onSubmit(event.currentTarget.value)}
-                />
-                <Label
-                  htmlFor="instore"
-                  className="flex flex-col items-center justify-between rounded-md border-2 border-gray-100 bg-white p-4 hover:bg-gray-100 hover:text-gray-900 peer-data-[state=checked]:border-gray-900 [&:has([data-state=checked])]:border-gray-900 dark:border-gray-800 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:peer-data-[state=checked]:border-gray-50 dark:[&:has([data-state=checked])]:border-gray-50"
-                >
-                  <StoreIcon className="mb-3 h-6 w-6" />
-                  Betala i butik
-                </Label>
-              </div>
-            </RadioGroup>
-          </CardContent>
-        </Card>
-
-        <AmountSummary
-          btnText="Gå vidare till summering"
-          path="/cart/summary"
-          showBtn={showbtn}
-        />
+    <>
+      <div className="w-full lg:w-3/5">
+        <NavHomeButton />
       </div>
-      <ProgressBar currentPage={currentPage} />
-    </div>
+      <div className="mx-4">
+        <h2>Betalningssätt</h2>
+        <h4>Välj ditt betalningssätt.</h4>
+
+        <div className="flex flex-col gap-8 p-4 mt-2 md:mt-8 justify-around md:flex-row">
+          <Card className="h-fit">
+            <CardContent className="p-2 sm:p-6">
+              <RadioGroup
+                defaultValue=""
+                className="grid grid-cols-2 justify-center gap:2 sm:gap-4"
+              >
+                <div>
+                  <RadioGroupItem
+                    value="card"
+                    id="card"
+                    className="peer sr-only"
+                    onClick={(event) => onSubmit(event.currentTarget.value)}
+                  />
+                  <Label
+                    htmlFor="card"
+                    className="flex flex-col items-center text-lg justify-between rounded-md border-2 border-gray-100 bg-white p-4 hover:bg-gray-100 hover:text-gray-900 peer-data-[state=checked]:border-gray-900 [&:has([data-state=checked])]:border-gray-900"
+                  >
+                    <CreditCardIcon className="mb-3 h-6 w-6" />
+                    Kort
+                  </Label>
+                </div>
+                <div>
+                  <RadioGroupItem
+                    value="instore"
+                    id="instore"
+                    className="peer sr-only"
+                    onClick={(event) => onSubmit(event.currentTarget.value)}
+                  />
+                  <Label
+                    htmlFor="instore"
+                    className="flex flex-col items-center text-lg justify-between rounded-md border-2 border-gray-100 bg-white p-4 hover:bg-gray-100 hover:text-gray-900 peer-data-[state=checked]:border-gray-900 [&:has([data-state=checked])]:border-gray-900"
+                  >
+                    <StoreIcon className="mb-3 h-6 w-6" />
+                    Betala i butik
+                  </Label>
+                </div>
+              </RadioGroup>
+            </CardContent>
+          </Card>
+
+          <AmountSummary
+            btnText="Gå vidare till summering"
+            path="/cart/summary"
+            showBtn={showbtn}
+          />
+        </div>
+        <ProgressBar currentPage={currentPage} />
+      </div>
+    </>
   );
 };
 

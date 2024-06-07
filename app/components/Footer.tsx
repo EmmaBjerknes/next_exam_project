@@ -1,5 +1,4 @@
 import Link from "next/link";
-import React from "react";
 import { FaLinkedin } from "react-icons/fa6";
 import { FaGithub } from "react-icons/fa6";
 import SignInAdmin from "./login-btn";
